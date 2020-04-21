@@ -1,13 +1,13 @@
 <div class="footer-box">
   <footer class="footer">
     <div class="copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By HsxyHao
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
     </div>
     <div class="poweredby">
       <%- site.themeConfig.footerInfo%>
     </div>
   </footer>
-  <% let scheme = site.customConfig.scheme; %>
+  <% let scheme = site.customConfig.scheme || 'pisces'; %>
   <% if (scheme === 'muse' || scheme === 'mist') { %>
     <div class="drawer-box <%= site.customConfig.sideIsRight?'right':'left' %>" id="drawer_box">
       <span class="muse-line muse-line-first"></span>
@@ -23,9 +23,9 @@
     </span>
     <% } %>
   </div>
-  <% if (site.customConfig.bgImg) { %>
+  <% if (site.customConfig.bgImg !== '' || site.customConfig.bgImgUrl !== '') { %>
     <div class="bg-img">
-      <img src="<%= site.customConfig.bgImg %>" />
+      <img src="<%= site.customConfig.cdn %><%= site.customConfig.bgImgUrl && site.customConfig.bgImgUrl !== '' ? site.customConfig.bgImgUrl : site.customConfig.bgImg %>" />
     </div>
   <% } %>
   <% if (site.customConfig.enableLive2d) { %>
@@ -165,6 +165,16 @@
     }
   }
 
+  // 链接跳转
+  let newWindow = '<%= site.customConfig.newWindow %>'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target","_blank");
+      }
+    })
+  }
   // 代码高亮
   hljs.initHighlightingOnLoad();
 

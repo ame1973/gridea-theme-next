@@ -29,13 +29,10 @@
   text-align: center;
 }
 
-.sidebar-item-box+.sidebar-item-box {
-  border-left: 1px solid #efefef;
-}
-
 .side-item-stat {
   display: flex;
   justify-content: space-around;
+  padding: 0 20px;
 } 
 
 .side-item-stat .site-item-stat-count {
@@ -74,12 +71,13 @@
   text-align: center;
   color: #222;
   font-weight: 600;
+  font-size: 1em;
 }
 
 .site-description {
   margin-top: 0;
   text-align: center;
-  font-size: 13px;
+  font-size: .8125em;
   color: #999;
   margin: 0 0 25px 0;
 }
@@ -87,23 +85,17 @@
 .sidebar-item-social {
   margin-top: 5px;
   padding-bottom: 5px;
-  border-bottom: 1px dotted #ccc ;
  }
 
 .sidebar-item-social > .social-item {
   position: relative;
-  text-align: left;
+  text-align: center;
 }
 
 .social-item > a {
-  text-align: left;
-  padding: 0 px;
   transition: all 0.2s linear;
   display: inline-block;
-  width: 90px;
-  white-space: nowrap;
-  font-size: 13px;
-  padding-left: 15px;
+  padding: 0 5px;
 }
 
 .social-img > img{
@@ -179,4 +171,10 @@
 .bg-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.home-sidebar-fixed {
+  position: fixed !important;
+  top: 0px;
 }

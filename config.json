@@ -1,6 +1,6 @@
 {
-  "name": "next",
-  "version": "0.0.1",
+  "name": "NexT",
+  "version": "0.2.1",
   "author": "hsxyhao",
   "repository": "https://github.com/hsxyhao/gridea-theme-next",
   "customConfig": [
@@ -37,10 +37,17 @@
       "type": "input"
     },
     {
-      "name": "signature",
-      "label": "站点描述",
+      "name": "bolgername",
+      "label": "博主名称",
       "group": "布局",
-      "value": "这个人很懒，什么都不想写...",
+      "value": "仅适用 Gemini,Pisces 布局",
+      "type": "input"
+    },
+    {
+      "name": "bolgerjs",
+      "label": "博主介绍",
+      "group": "布局",
+      "value": "仅适用 Gemini,Pisces 布局",
       "type": "input"
     },
     {
@@ -50,6 +57,30 @@
       "value": "",
       "type": "textarea",
       "note": "可以修改主题中的指定元素以及markdown的样式、颜色，需要css基础"
+    },
+    {
+      "name": "viewportWidth",
+      "label": "博客可视区宽度",
+      "group": "布局",
+      "value": "960px",
+      "type": "input",
+      "note": "各Scheme14寸屏左右推荐配置：Pisces 960px,Muse 700px, Mist 85%, Gemini 960px。在Pisces、Gemini风格中博客可视区宽度比文章内容区宽度多250~260px左右，设置了可视区宽度默认改变了内容区宽度"
+    },
+    {
+      "name": "fontSize",
+      "label": "字体大小",
+      "group": "布局",
+      "value": "",
+      "type": "input",
+      "note": "阅读内容区域字体大小，默认14"
+    },
+    {
+      "name": "fontFamily",
+      "label": "字体",
+      "group": "布局",
+      "value": "",
+      "type": "input",
+      "note": "修改字体需要将下载好的ttf文件复制到~/Gridea/themes/next/assets/media/fonts目录下，把文件名写在上面，重新生成即可，若无效联系微信:wx806649821(备注Next)"
     },
     {
       "name": "bgColor",
@@ -161,12 +192,78 @@
       "card": "color"
     },
     {
+      "name": "mouseClick",
+      "label": "鼠标点击效果",
+      "group": "鼠标",
+      "value": "none",
+      "type": "radio",
+      "options": [
+        {
+          "label": "无",
+          "value": "none"
+        },
+        {
+          "label": "love",
+          "value": "love"
+        }]
+    },
+    {
+      "name": "cursorDefault",
+      "label": "默认",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "cursorLink",
+      "label": "链接",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "cursorText",
+      "label": "文本",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "cursorCopy",
+      "label": "复制",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "cursorZoomin",
+      "label": "放大",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "cursorZoomout",
+      "label": "缩小",
+      "group": "鼠标",
+      "value": "",
+      "type": "input"
+    },
+    {
       "name": "seoKeywords",
       "label": "SEO",
       "group": "特性",
       "value": "Gridea静态个人博客",
       "type": "input",
       "note": "seo优化关键字"
+    },
+    {
+      "name": "imgFillet",
+      "label": "站点预览头像圆角",
+      "group": "特性",
+      "value": true,
+      "type": "switch",
+      "note": "开启会产生头像旋转彩蛋"
     },
     {
       "name": "menuIcon",
@@ -198,28 +295,20 @@
       "note": "默认菜单栏在左边显示"
     },
     {
-      "name": "viewportWidth",
-      "label": "博客可视区宽度",
-      "group": "布局",
-      "value": "960px",
-      "type": "input",
-      "note": "各Scheme14寸屏左右推荐配置：Pisces 960px,Muse 700px, Mist 85%, Gemini 960px。在Pisces、Gemini风格中博客可视区宽度比文章内容区宽度多250~260px左右，设置了可视区宽度默认改变了内容区宽度"
-    },
-    {
-      "name": "fontFamily",
-      "label": "字体",
-      "group": "布局",
-      "value": "",
-      "type": "input",
-      "note": "修改字体需要将下载好的ttf文件复制到~/Gridea/themes/next/assets/media/fonts目录下，把文件名写在上面，重新生成即可，若无效联系微信:wx806649821(备注Next)"
-    },
-    {
       "name": "updateTip",
       "label": "是否开启更新提示",
       "group": "特性",
       "value": false,
       "type": "switch",
-      "note": "默认不开启更新提示，但是建议开启"
+      "note": "默认不开启更新提示，但是建议开启（未完成）"
+    },
+    {
+      "name": "newWindow",
+      "label": "文章链接新窗口打开",
+      "group": "特性",
+      "value": false,
+      "type": "switch",
+      "note": "开启后博客内的链接会在新的窗口打开"
     },
     {
       "name": "siteBar",
@@ -767,12 +856,44 @@
       "note": "QQ、微信类有二维码图片的社交账号，可以在这里添加"
     },
     {
+      "name": "enableFriendPage",
+      "label": "自定义友链页面",
+      "group": "友链",
+      "value": true,
+      "type": "switch",
+      "note": "开启后会自动在菜单栏生成一个友链导航，不开启在站点预览下出现友链"
+    },
+    {
       "name": "friendsTitle",
       "label": "友链",
       "group": "友链",
       "value": "友情链接",
       "type": "input",
       "note": "自定义友链标题"
+    },
+    {
+      "name": "friendsIcon",
+      "label": "导航图标",
+      "group": "友链",
+      "value": "",
+      "type": "input",
+      "note": "支持emoji图标，默认为fa-ship"
+    },
+    {
+      "name": "friendsTarget",
+      "label": "内部/外部",
+      "group": "友链",
+      "value": "_self",
+      "type": "input",
+      "note": "_blank: 浏览器中打开新的tab页，_self: 当前tab页跳转"
+    },
+    {
+      "name": "friendsIndex",
+      "label": "导航链接位置",
+      "group": "友链",
+      "value": "",
+      "type": "input",
+      "note": "在导航菜单中的排序，默认最后一个"
     },
     {
       "name": "friends",
@@ -783,7 +904,9 @@
       ], 
       "arrayItems": [
           { "label": "名称", "name": "siteName", "type": "input", "value": "" },
-          { "label": "链接", "name": "siteLink", "type": "input", "value": "" }
+          { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
+          { "label": "头像", "name": "siteAvator", "type": "input", "value": "" },
+          { "label": "描述", "name": "siteDesc", "type": "input", "value": "" }
       ]
     },
     {
@@ -795,20 +918,12 @@
       "note": "博客整体背景图"
     },
     {
-      "name": "headerImg",
-      "label": "标题背景图片",
+      "name": "bgImgUrl",
+      "label": "背景图片地址（兼容windows）",
       "group": "魔改",
       "value": "",
-      "type": "picture-upload",
-      "note": "Muse风格的Header区域背景图片，仅在Muse风格中生效"
-    },
-    {
-      "name": "siteMetaImg",
-      "label": "站点预览背景图片",
-      "group": "魔改",
-      "value": "",
-      "type": "picture-upload",
-      "note": "仅在Muse、Mist风格中生效"
+      "type": "input",
+      "note": "目前windows系统使用背景图片请手动填写，上传会造成配置无法保存，具体填写规范README上有介绍"
     },
     {
       "name": "opacity",
@@ -817,6 +932,14 @@
       "value": "",
       "type": "input",
       "note": "正常模式下所有标签的透明度，仅数字1~100"
+    },
+    {
+      "name": "radius",
+      "label": "圆角",
+      "group": "魔改",
+      "value": "",
+      "type": "input",
+      "note": "Pisces、Gemini风格下圆角配置"
     },
     {
       "name": "bgTitleFontSize",
@@ -863,6 +986,20 @@
       "value": "",
       "type": "input",
       "note": "建议值[0,1]"
+    },
+    {
+      "name": "live2dLeft",
+      "label": "看板娘距左边距离",
+      "group": "看板娘",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "live2dBottom",
+      "label": "看板娘距底部距离",
+      "group": "看板娘",
+      "value": "",
+      "type": "input"
     },
     {
       "name": "musicLinks",
@@ -934,7 +1071,7 @@
       "group": "评论",
       "value": false,
       "type": "switch",
-      "note": "启用后会覆盖gridea自带的评论"
+      "note": "启用后会覆盖gridea自带的评论,获取appID和appKey请看 https://valine.js.org/quickstart.html"
     },
     {
       "name": "appID",
@@ -1060,6 +1197,30 @@
       "value": false,
       "type": "switch",
       "note": "每次访问强制拉取最新的评论列表头像，不推荐设置为true，目前的评论列表头像会自动带上Valine的版本号"
+    },
+    {
+      "name": "cdn",
+      "label": "地址",
+      "group": "CDN",
+      "value": "",
+      "type": "input",
+      "note": "只包含主题的静态资源，博客文章部分的静态资源（图片）需要手动引用"
+    },
+    {
+      "name": "ga",
+      "label": "谷歌分析",
+      "group": "跟踪",
+      "value": "",
+      "type": "input",
+      "note": "UA-xxxxxxxx-1"
+    },
+    {
+      "name": "bd",
+      "label": "百度分析",
+      "group": "跟踪",
+      "value": "",
+      "type": "input",
+      "note": "xxxxxx32e97exxx0605fcc44xxxxxxx"
     }
   ]
 }

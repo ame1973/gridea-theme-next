@@ -11,7 +11,7 @@
       <%- include('./_blocks/header', {active: false}) %>
     </div>
     <div class="main-continer">
-      <% let scheme = site.customConfig.scheme; %>
+      <% let scheme = site.customConfig.scheme || 'pisces'; %>
       <div class="section-layout <%= scheme?scheme:'pisces' %> <%= scheme === 'muse' || scheme === 'mist' ?'bg-color':'' %>">
         <div class="section-layout-wrapper">
           <%- include('./_blocks/post-sidebar', {toc: post.toc, link: '/'}) %>
@@ -22,24 +22,14 @@
                 <%- post.content %>
               </div>
               <%- include('./_blocks/post-footer') %>
-              <% if (site.customConfig.valine) { %>
-                <%- include('./_blocks/valine') %>
-              <% } else { %>
-                <% if (typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>\
-                  <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                    <%- include('./_blocks/gitalk') %>
-                  <% } %>
-                  <% if (commentSetting.commentPlatform === 'disqus') { %>
-                    <%- include('./_blocks/disqus') %>
-                  <% } %>
-                <% } %>
-              <% } %>
+              <%- include('./_blocks/comment') %>
             </div>
           </div>
         </div>
       </div>
       <%- include('./_blocks/footer') %>
+      <%- include('./_blocks/light-box') %>
     </div>
   </body>
-  <script src="/media/js/motion.js"></script>
+  <%- include('./_blocks/after-body') %>
 </html>

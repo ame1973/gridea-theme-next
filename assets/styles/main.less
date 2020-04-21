@@ -39,6 +39,7 @@ body {
   line-height: 2;
   width: 100%;
   overflow-x: hidden;
+  user-select: none;
 }
 
 sub,
@@ -51,17 +52,11 @@ sup {
 
 blockquote {
   color: #9a9a9a;
-  position: relative;
-  padding: .4em 0 0 2.2em;
-  font-size: .96em;
-  &:before {
-    position: absolute;
-    left: 4px;
-    content: "\201c";
-    font: 700 40px/1 serif;
-    color: rgba(0,0,0,.1);
-  }
+  margin: 0;
+  padding: 0 15px;
+  border-left: 4px solid #c5c5c5;
 }
+
 #canvas {
   left: 0px;
   top: 0px;
@@ -97,10 +92,51 @@ blockquote {
   color: #000;
 }
 
+.light-box {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  width: 100%; 
+  left: 0px; 
+  top: 0px; 
+  transition: opacity 300ms ease-in-out 0s; 
+  z-index: 99999;
+}
 
+.light-box img {
+  width: 0;
+  transition: width 1000ms ease-in-out 0s;
+}
+
+.post-body img {
+  cursor: zoom-in;
+}
+.post-body pre {
+  position: relative;
+}
+
+pre > span.copy-code {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  line-height: 1;
+  color: hsla(0,0%,54.9%,.8);
+  transition: color .1s;
+  user-select: none;
+}
+
+pre > span.copy-code:hover {
+  color: #FFF;
+}
 
 @import './_core/common.less';
 @import './_blocks/footer.less';
+@import './_blocks/friends.less';
 @import './_blocks/section.less';
 @import './_blocks/pagination.less';
 @import './_blocks/post-list.less';
@@ -111,5 +147,6 @@ blockquote {
 @import './_blocks/tag-timeline.less';
 @import './_blocks/archive-timeline.less';
 @import './_blocks/toc.less';
+@import './_blocks/search.less';
 @import './_core/markdown.less';
 @import './_core/hljs.less';
